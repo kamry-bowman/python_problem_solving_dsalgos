@@ -29,10 +29,25 @@ class BinaryGate(LogicGate):
 
 class UnaryGate(LogicGate):
     def __init__(self, n):
-        Logicate.__init__(self, n)
+        LogicGate.__init__(self, n)
 
         self.pin = None
 
     def getPin(self):
         return int(input("Enter Pin input for gate" +
                          self.getLabel() + "-->"))
+
+
+class AndGate(BinaryGate):
+
+    def __init__(self, n):
+        super(AndGate, self).__init__(n)
+
+    def performGateLogic(self):
+
+        a = self.getPinA()
+        b = self.getPinB()
+        if a == 1 and b == 1:
+            return 1
+        else:
+            return 0
